@@ -57,18 +57,62 @@ namespace BaseSim2021
 
         private void GameView_Paint(object sender, PaintEventArgs e)
         {
-            /*
-            diffLabel.Text = "Difficulté : " + "?";
-            turnLabel.Text = "Tour " + "?";
-            moneyLabel.Text = "Trésor : " + "?" + " pièces d'or";
-            gloryLabel.Text = "Gloire : " + "?";
-            */
-            nextButton.Visible = false;
+            
+            diffLabel.Text = "Difficulté : " + theWorld.TheDifficulty;
+            turnLabel.Text = "Tour " + theWorld.Turns;
+            moneyLabel.Text = "Trésor : " + theWorld.Money + " pièces d'or";
+            gloryLabel.Text = "Gloire : " + theWorld.Glory;
+            
+            nextButton.Visible = true;
         }
         #endregion
 
         private void NextButton_Click(object sender, EventArgs e)
         {
+            GameController.Interpret("suivant");
+        }
+        public void LoseDialog(IndexedValue indexedValue)
+        {
+            if (indexedValue == null)
+            {
+                MessageBox.Show("Partie perdue : dette insurmontable.");
+            }
+            else
+            {
+                MessageBox.Show("Partie perdue :"
+                + indexedValue.CompletePresentation());
+            }
+            nextButton.Enabled = false;
+        }
+        public void WinDialog()
+        {
+            MessageBox.Show("Partie gagnée !");
+            nextButton.Enabled = false;
+        }
+
+        private void winButtonDebug_Click(object sender, EventArgs e)
+        {
+            GameController.Interpret("politique gardes 100");
+            GameController.Interpret("politique pretres 100");
+            GameController.Interpret("politique impots 40");
+            GameController.Interpret("suivant");
+            GameController.Interpret("politique subventions 100");
+            GameController.Interpret("politique quetegraal 10");
+            GameController.Interpret("suivant");
+            GameController.Interpret("politique ecoles 100");
+            GameController.Interpret("politique enchanteurs 100");
+            GameController.Interpret("politique  taxeluxe 10");
+            GameController.Interpret("suivant");
+            GameController.Interpret("politique theatres 100");
+            GameController.Interpret("politique taxealcool 5");
+            GameController.Interpret("politique agrandirterritoires 2");
+            GameController.Interpret("politique monstres 2");
+            GameController.Interpret("suivant");
+            GameController.Interpret("suivant");
+            GameController.Interpret("politique thermes 100");
+            GameController.Interpret("politique juges 100");
+            GameController.Interpret("politique taxefonciere 5");
+            GameController.Interpret("politique dragons 5");
 
         }
     }

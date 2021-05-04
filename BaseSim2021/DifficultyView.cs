@@ -26,6 +26,5 @@ namespace BaseSim2021
         private void EasyButton_Click(object sender, EventArgs e) => Difficulty = WorldState.Difficulty.Easy;
         private void MidButton_Click(object sender, EventArgs e) => Difficulty = WorldState.Difficulty.Medium;
         private void HardButton_Click(object sender, EventArgs e) => Difficulty = WorldState.Difficulty.Hard;
-
     }
 }
