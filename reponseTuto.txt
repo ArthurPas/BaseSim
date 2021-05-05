@@ -1,0 +1,15 @@
+Question 1 Combien y a-t-il de façons de gagner, de perdre ? À quel endroit dans le code déclenche-t-on la victoire
+et la défaite ?
+Il y a une facon de gagner et deux facons de perdre et on déclenche la victoire ou la défaite dans la methode NextTurn de la classe
+WorldState
+Question 2 À quoi correspond la propriété DefaultCommand de la classe GameController?
+Elle correspond a la premiere commande qui sera donc par défaut lors d'une entrée vide
+Question 3 Comment la difficulté est-elle choisie et pourquoi le choix Difficile ne fonctionne-t-il pas ?
+La difficulté est choisie en cliquant sur le bouton associé a chaque difficulté et difficile ne fonctionne pas car elle n'a pas de référence
+Question 4 Comment la boîte de dialogue se ferme-t-elle et pourquoi le bouton Difficile ne permet-il pas de la
+fermer ?
+Elle se ferme grâce à la propriété "dialog result" qui doit être sur ok pour la fermer quand on clique dessus
+Question 5 Lors du passage au tour suivant (la commande tapée est suivant), comment GameView et GameController interagissent-elles pour faire le passage au tour suivant (quelles sont les méthodes appelées, quels sont
+leurs effets) ?
+Tout d'abord nous allons interpreter la chaine de caractére entrer dans la inputtextbox via la methode "Interpret" de la gameControler, ensuite cette methode Interpret va effectuer l'action demandé (ici suivant)
+Ce qui va ensuite nous amener a la méthode MakeCommand qui va effectuer le tour via la méthode NextTurn de WorldState.

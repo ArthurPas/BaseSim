@@ -13,13 +13,26 @@ namespace BaseSim2021
     public partial class GameView : Form
     {
         private readonly WorldState theWorld;
+        private IndexedValueView IndexValView;
         /// <summary>
         /// The constructor for the main window
         /// </summary>
         public GameView(WorldState world)
         {
             InitializeComponent();
+            
             theWorld = world;
+            if (theWorld.Values != null)
+            {
+                foreach (IndexedValue index in theWorld.Groups)
+                {
+                    IndexValView = new IndexedValueView(index,new Point(10,10), new Size(10,10),1, Color.Red, "Times New Roman");
+                }
+                foreach (IndexedValue index in theWorld.Crises)
+                {
+                    IndexValView = new IndexedValueView(index, new Point(20, 20), new Size(10, 10), 1, Color.Red, "Times New Roman");
+                }
+            }
         }
         /// <summary>
         /// Method called by the controler whenever some text should be displayed
@@ -57,7 +70,7 @@ namespace BaseSim2021
 
         private void GameView_Paint(object sender, PaintEventArgs e)
         {
-            
+            IndexValView.Draw(e.Graphics);
             diffLabel.Text = "Difficulté : " + theWorld.TheDifficulty;
             turnLabel.Text = "Tour " + theWorld.Turns;
             moneyLabel.Text = "Trésor : " + theWorld.Money + " pièces d'or";
