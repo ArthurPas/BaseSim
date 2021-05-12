@@ -18,11 +18,10 @@ namespace BaseSim2021
 
         public void Draw(Graphics g)
         {
-            Point Position = new Point(10, 10); 
-                Rectangle r = new Rectangle(Position, new Size(100,100));
+                Rectangle r = new Rectangle(Position,Size);
                 Pen p = new Pen(Color, Thickness);
                 g.DrawString(IndexedValue.ToString(), new Font(Police,
-                15, FontStyle.Bold), Brushes.Fuchsia, Position);
+                10, FontStyle.Regular), Brushes.Black, Position);
                 g.DrawRectangle(p, r);
         }
 

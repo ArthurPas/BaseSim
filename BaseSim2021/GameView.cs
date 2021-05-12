@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace BaseSim2021
@@ -13,7 +9,10 @@ namespace BaseSim2021
     public partial class GameView : Form
     {
         private readonly WorldState theWorld;
-        private IndexedValueView IndexValView;
+        private IndexedValueView view;
+        private IndexedValueView pretres;
+        private IndexedValueView mordred;
+        private IndexedValueView prestige;
         /// <summary>
         /// The constructor for the main window
         /// </summary>
@@ -22,18 +21,7 @@ namespace BaseSim2021
             InitializeComponent();
             
             theWorld = world;
-            if (theWorld.Values != null)
-            {
-                foreach (IndexedValue index in theWorld.Groups)
-                {
-                    IndexValView = new IndexedValueView(index,new Point(10,10), new Size(10,10),1, Color.Red, "Times New Roman");
-                }
-                foreach (IndexedValue index in theWorld.Crises)
-                {
-                    IndexValView = new IndexedValueView(index, new Point(20, 20), new Size(10, 10), 1, Color.Red, "Times New Roman");
-                }
             }
-        }
         /// <summary>
         /// Method called by the controler whenever some text should be displayed
         /// </summary>
@@ -70,13 +58,50 @@ namespace BaseSim2021
 
         private void GameView_Paint(object sender, PaintEventArgs e)
         {
-            IndexValView.Draw(e.Graphics);
-            diffLabel.Text = "Difficulté : " + theWorld.TheDifficulty;
-            turnLabel.Text = "Tour " + theWorld.Turns;
-            moneyLabel.Text = "Trésor : " + theWorld.Money + " pièces d'or";
-            gloryLabel.Text = "Gloire : " + theWorld.Glory;
-            
-            nextButton.Visible = true;
+            if (theWorld.Values != null)
+            {
+                int index = 0;
+                foreach (IndexedValue indexed in theWorld.Groups)
+                {
+                    view = new IndexedValueView(indexed, new Point(100*index,10), new Size(1, 1), 1, Color.Red, "Times New Roman");
+                    view.Draw(e.Graphics);
+                    index++;
+                }
+                index = 0;
+                foreach (IndexedValue indexed in theWorld.Policies)
+                {
+                    view = new IndexedValueView(indexed, new Point(100 * index, 30), new Size(1, 1), 1, Color.Red, "Times New Roman");
+                    view.Draw(e.Graphics);
+                    index++;
+                }
+                index = 0;
+                foreach (IndexedValue indexed in theWorld.Indicators)
+                {
+                    view = new IndexedValueView(indexed, new Point(100 * index, 50), new Size(1, 1), 1, Color.Red, "Times New Roman");
+                    view.Draw(e.Graphics);
+                    index++;
+                }
+                index = 0;
+                foreach (IndexedValue indexed in theWorld.Perks)
+                {
+                    view = new IndexedValueView(indexed, new Point(100 * index, 70), new Size(1, 1), 1, Color.Red, "Times New Roman");
+                    view.Draw(e.Graphics);
+                    index++;
+                }
+                index = 0;
+                foreach (IndexedValue indexed in theWorld.Crises)
+                {
+                    view = new IndexedValueView(indexed, new Point(100 * index, 90), new Size(1, 1), 1, Color.Red, "Times New Roman");
+                    view.Draw(e.Graphics);
+                    index++;
+                }
+                diffLabel.Text = "Difficulté : " + theWorld.TheDifficulty;
+                turnLabel.Text = "Tour " + theWorld.Turns;
+                moneyLabel.Text = "Trésor : " + theWorld.Money + " pièces d'or";
+                gloryLabel.Text = "Gloire : " + theWorld.Glory;
+
+                nextButton.Visible = true;
+            }
         }
         #endregion
 
