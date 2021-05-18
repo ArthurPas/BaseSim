@@ -18,21 +18,29 @@ namespace BaseSim2021
 
         public void Draw(Graphics g)
         {
-                Rectangle r = new Rectangle(Position,Size);
-                Pen p = new Pen(Color, Thickness);
-                g.DrawString(IndexedValue.ToString(), new Font(Police,
-                10, FontStyle.Regular), Brushes.Black, Position);
-                g.DrawRectangle(p, r);
+            Rectangle r = new Rectangle(Position,Size);
+            Pen p = new Pen(Color, Thickness);
+            g.DrawString(IndexedValue.Name, new Font(Police,
+            10, FontStyle.Regular), Brushes.Black, new Rectangle(new Point(Position.X+20, Position.Y+10), new Size(Size.Width, Size.Height/2)));
+            g.DrawString(IndexedValue.Type.ToString(), new Font(Police,
+            10, FontStyle.Regular), Brushes.Black, r.X+20, r.Y);
+            g.DrawString(IndexedValue.MinValue.ToString(), new Font(Police,
+            10, FontStyle.Regular), Brushes.Black,r.X, r.Y + 30);
+            g.DrawString(IndexedValue.MaxValue.ToString(), new Font(Police,
+            10, FontStyle.Regular), Brushes.Black, r.X+50, r.Y+30);
+            g.DrawString(IndexedValue.Value.ToString(), new Font(Police,
+           10, FontStyle.Bold), Brushes.Black, r.X+30, r.Y + 50);
+            g.DrawRectangle(p, r);
         }
 
-        public IndexedValueView(IndexedValue indexedValue,Point position,Size size,int thickness, Color color, string police)
+        public IndexedValueView(IndexedValue indexedValue,Point position,Size size)
         {
             IndexedValue = indexedValue;
             Position = position;
             Size = size;
-            Thickness = thickness;
-            Color = color;
-            Police = police;
+            Thickness = 1;
+            Color = Color.Red;
+            Police ="Times New Roman";
         }
     }
 }

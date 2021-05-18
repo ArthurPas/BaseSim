@@ -19,9 +19,9 @@ namespace BaseSim2021
         public GameView(WorldState world)
         {
             InitializeComponent();
-            
+
             theWorld = world;
-            }
+        }
         /// <summary>
         /// Method called by the controler whenever some text should be displayed
         /// </summary>
@@ -29,7 +29,7 @@ namespace BaseSim2021
         public void WriteLine(string s)
         {
             List<string> strs = s.Split('\n').ToList();
-            strs.ForEach(str=>outputListBox.Items.Add(str));
+            strs.ForEach(str => outputListBox.Items.Add(str));
             if (outputListBox.Items.Count > 0)
             {
                 outputListBox.SelectedIndex = outputListBox.Items.Count - 1;
@@ -60,40 +60,105 @@ namespace BaseSim2021
         {
             if (theWorld.Values != null)
             {
-                int index = 0;
-                foreach (IndexedValue indexed in theWorld.Groups)
+                Rectangle PolRectangle = new Rectangle(0, 0, 2100, 300);
+                Rectangle GrpRectangle = new Rectangle(0, 100, 2100, 300);
+                Rectangle IndRectangle = new Rectangle(0, 200, 2100, 300);
+                Rectangle PerksRectangle = new Rectangle(0, 300, 2100, 300);
+                Rectangle CrisesRectangle = new Rectangle(0, 400, 2100, 300);
+                int margin = 10;
+                int xPol = PolRectangle.X + margin, yPol = PolRectangle.Y + margin;
+                int xGrp = GrpRectangle.X + margin, yGrp = GrpRectangle.Y + margin;
+                int xInd = IndRectangle.X + margin, yInd = IndRectangle.Y + margin;
+                int xPer = PerksRectangle.X + margin, yPer = PerksRectangle.Y + margin;
+                int xCri = CrisesRectangle.X + margin, yCri = CrisesRectangle.Y + margin;
+                int w = 80;
+                int h = 80;
+                List<IndexedValueView> polViews = new List<IndexedValueView>();
+                List<IndexedValueView> grpViews = new List<IndexedValueView>();
+                List<IndexedValueView> indViews = new List<IndexedValueView>();
+                List<IndexedValueView> perksViews = new List<IndexedValueView>();
+                List<IndexedValueView> crisesViews = new List<IndexedValueView>();
+                foreach (IndexedValue p in theWorld.Policies)
                 {
-                    view = new IndexedValueView(indexed, new Point(100*index,10), new Size(1, 1), 1, Color.Red, "Times New Roman");
-                    view.Draw(e.Graphics);
-                    index++;
+                    
+                    polViews.Add(new IndexedValueView(p, new Point(xPol, yPol), new Size(w, h)));
+                    xPol += w + margin;
+                    if (xPol > PolRectangle.Right)
+                    {
+
+                        xPol = PolRectangle.X;
+                        yPol += h + margin;
+                    }
+                    
                 }
-                index = 0;
-                foreach (IndexedValue indexed in theWorld.Policies)
+                foreach (IndexedValue p in theWorld.Groups)
                 {
-                    view = new IndexedValueView(indexed, new Point(100 * index, 30), new Size(1, 1), 1, Color.Red, "Times New Roman");
-                    view.Draw(e.Graphics);
-                    index++;
+                    Console.WriteLine("test");
+                    grpViews.Add(new IndexedValueView(p, new Point(xGrp, yGrp), new Size(w, h)));
+                    xGrp += w + margin;
+                    if (xGrp > GrpRectangle.Right)
+                    {
+
+                        xGrp = GrpRectangle.X;
+                        yGrp += h + margin;
+                    }
+                    
                 }
-                index = 0;
-                foreach (IndexedValue indexed in theWorld.Indicators)
+                foreach (IndexedValue p in theWorld.Indicators)
                 {
-                    view = new IndexedValueView(indexed, new Point(100 * index, 50), new Size(1, 1), 1, Color.Red, "Times New Roman");
-                    view.Draw(e.Graphics);
-                    index++;
+                    indViews.Add(new IndexedValueView(p, new Point(xInd, yInd), new Size(w, h)));
+                    xInd += w + margin;
+                    if (xInd > IndRectangle.Right)
+                    {
+
+                        xInd = IndRectangle.X;
+                        yInd += h + margin;
+                    }
+                    
                 }
-                index = 0;
-                foreach (IndexedValue indexed in theWorld.Perks)
+                foreach (IndexedValue p in theWorld.Perks)
                 {
-                    view = new IndexedValueView(indexed, new Point(100 * index, 70), new Size(1, 1), 1, Color.Red, "Times New Roman");
-                    view.Draw(e.Graphics);
-                    index++;
+                    perksViews.Add(new IndexedValueView(p, new Point(xPer, yPer), new Size(w, h)));
+                    xPer += w + margin;
+                    if (xPer > PerksRectangle.Right)
+                    {
+
+                        xPer = PerksRectangle.X;
+                        yPer += h + margin;
+                    }
+                    
                 }
-                index = 0;
-                foreach (IndexedValue indexed in theWorld.Crises)
+                foreach (IndexedValue p in theWorld.Crises)
                 {
-                    view = new IndexedValueView(indexed, new Point(100 * index, 90), new Size(1, 1), 1, Color.Red, "Times New Roman");
-                    view.Draw(e.Graphics);
-                    index++;
+                    crisesViews.Add(new IndexedValueView(p, new Point(xCri, yCri), new Size(w, h)));
+                    xCri += w + margin;
+                    if (xCri > CrisesRectangle.Right)
+                    {
+
+                        xCri = CrisesRectangle.X;
+                        yCri += h + margin;
+                    }
+                    
+                }
+                foreach (IndexedValueView indexed in polViews)
+                {
+                    indexed.Draw(e.Graphics);
+                }
+                foreach (IndexedValueView indexed in grpViews)
+                {
+                    indexed.Draw(e.Graphics);
+                }
+                foreach (IndexedValueView indexed in indViews)
+                {
+                    indexed.Draw(e.Graphics);
+                }
+                foreach (IndexedValueView indexed in perksViews)
+                {
+                    indexed.Draw(e.Graphics);
+                }
+                foreach (IndexedValueView indexed in crisesViews)
+                {
+                    indexed.Draw(e.Graphics);
                 }
                 diffLabel.Text = "Difficulté : " + theWorld.TheDifficulty;
                 turnLabel.Text = "Tour " + theWorld.Turns;
