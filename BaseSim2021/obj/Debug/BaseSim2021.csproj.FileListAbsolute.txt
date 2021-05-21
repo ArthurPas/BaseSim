@@ -9,3 +9,4 @@
 \\iut.bx1\Etudiants\Home\apascal002\Documents\basesim2021\BaseSim2021\obj\Debug\BaseSim2021.csproj.CoreCompileInputs.cache
 \\iut.bx1\Etudiants\Home\apascal002\Documents\basesim2021\BaseSim2021\obj\Debug\BaseSim2021.exe
 \\iut.bx1\Etudiants\Home\apascal002\Documents\basesim2021\BaseSim2021\obj\Debug\BaseSim2021.pdb
+\\iut.bx1\Etudiants\Home\apascal002\Documents\basesim2021\BaseSim2021\obj\Debug\BaseSim2021.Modif.resources

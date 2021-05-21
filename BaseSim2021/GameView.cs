@@ -9,10 +9,11 @@ namespace BaseSim2021
     public partial class GameView : Form
     {
         private readonly WorldState theWorld;
-        private IndexedValueView view;
-        private IndexedValueView pretres;
-        private IndexedValueView mordred;
-        private IndexedValueView prestige;
+        List<IndexedValueView> polViews;
+        List<IndexedValueView> grpViews;
+        List<IndexedValueView> indViews;
+        List<IndexedValueView> perksViews;
+        List<IndexedValueView> crisesViews;
         /// <summary>
         /// The constructor for the main window
         /// </summary>
@@ -73,11 +74,11 @@ namespace BaseSim2021
                 int xCri = CrisesRectangle.X + margin, yCri = CrisesRectangle.Y + margin;
                 int w = 80;
                 int h = 80;
-                List<IndexedValueView> polViews = new List<IndexedValueView>();
-                List<IndexedValueView> grpViews = new List<IndexedValueView>();
-                List<IndexedValueView> indViews = new List<IndexedValueView>();
-                List<IndexedValueView> perksViews = new List<IndexedValueView>();
-                List<IndexedValueView> crisesViews = new List<IndexedValueView>();
+                polViews = new List<IndexedValueView>();
+                grpViews = new List<IndexedValueView>();
+                indViews = new List<IndexedValueView>();
+                perksViews = new List<IndexedValueView>();
+                crisesViews = new List<IndexedValueView>();
                 foreach (IndexedValue p in theWorld.Policies)
                 {
                     
@@ -93,7 +94,6 @@ namespace BaseSim2021
                 }
                 foreach (IndexedValue p in theWorld.Groups)
                 {
-                    Console.WriteLine("test");
                     grpViews.Add(new IndexedValueView(p, new Point(xGrp, yGrp), new Size(w, h)));
                     xGrp += w + margin;
                     if (xGrp > GrpRectangle.Right)
@@ -217,6 +217,11 @@ namespace BaseSim2021
             GameController.Interpret("politique taxefonciere 5");
             GameController.Interpret("politique dragons 5");
 
+        }
+
+        private void GameView_MouseDown(object sender, MouseEventArgs e)
+        {
+                   
         }
     }
 }

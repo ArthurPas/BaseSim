@@ -49,5 +49,10 @@ namespace BaseSim2021
             Color = Color.Red;
             Police = "Times New Roman";
         }
+        public bool Contains(Point p)
+        {
+            Rectangle rec = new Rectangle(Position, Size);
+            return rec.Contains(p);
+        }
     }
 }
