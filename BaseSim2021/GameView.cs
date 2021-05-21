@@ -221,7 +221,10 @@ namespace BaseSim2021
 
         private void GameView_MouseDown(object sender, MouseEventArgs e)
         {
-                   
+
+            Modif modif = new Modif();
+            modif.Show();
         }
+
     }
 }
