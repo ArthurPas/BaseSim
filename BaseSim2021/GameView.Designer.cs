@@ -128,7 +128,7 @@ namespace BaseSim2021
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1763, 725);
+            this.ClientSize = new System.Drawing.Size(1875, 725);
             this.Controls.Add(this.winButtonDebug);
             this.Controls.Add(this.nextButton);
             this.Controls.Add(this.gloryLabel);

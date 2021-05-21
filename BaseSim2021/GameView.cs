@@ -65,7 +65,7 @@ namespace BaseSim2021
                 Rectangle IndRectangle = new Rectangle(0, 200, 2100, 300);
                 Rectangle PerksRectangle = new Rectangle(0, 300, 2100, 300);
                 Rectangle CrisesRectangle = new Rectangle(0, 400, 2100, 300);
-                int margin = 10;
+                int margin = 5;
                 int xPol = PolRectangle.X + margin, yPol = PolRectangle.Y + margin;
                 int xGrp = GrpRectangle.X + margin, yGrp = GrpRectangle.Y + margin;
                 int xInd = IndRectangle.X + margin, yInd = IndRectangle.Y + margin;
