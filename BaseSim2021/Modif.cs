@@ -12,9 +12,15 @@ namespace BaseSim2021
 {
     public partial class Modif : Form
     {
-        public Modif()
+        public Modif(string name, int value, int max, int min)
         {
+            
             InitializeComponent();
+            this.labelName.Text = name;
+            this.NumericUpDown.Maximum = max;
+            this.NumericUpDown.Minimum = min;
+            this.NumericUpDown.Value = value;
+            
         }
     }
 }

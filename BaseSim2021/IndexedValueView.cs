@@ -15,11 +15,13 @@ namespace BaseSim2021
         public int Thickness { get; set; } = 10;
         public Color Color { get; set; } = Color.Red;
         public String Police { get; set; } = "Times New Roman";
-
+        public Color BgColor { get; set; }
         public void Draw(Graphics g)
         {
             StringFormat theFormat = new StringFormat();
             Rectangle r = new Rectangle(Position, Size);
+            SolidBrush Brush = new SolidBrush(BgColor);
+            g.FillRectangle(Brush, r);
             Pen p = new Pen(Color, Thickness);
             theFormat.Alignment = StringAlignment.Center;
             theFormat.LineAlignment = StringAlignment.Near;
@@ -37,10 +39,11 @@ namespace BaseSim2021
             theFormat.Alignment = StringAlignment.Far;
             g.DrawString(IndexedValue.MaxValue.ToString(), new Font(Police,
             10, FontStyle.Regular), Brushes.Black, r, theFormat);
+            
             g.DrawRectangle(p, r);
         }
 
-        public IndexedValueView(IndexedValue indexedValue, Point position, Size size)
+        public IndexedValueView(IndexedValue indexedValue, Point position, Size size, Color BackColor)
         {
             IndexedValue = indexedValue;
             Position = position;
@@ -48,6 +51,7 @@ namespace BaseSim2021
             Thickness = 1;
             Color = Color.Red;
             Police = "Times New Roman";
+            BgColor = BackColor;
         }
         public bool Contains(Point p)
         {

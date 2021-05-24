@@ -10,3 +10,15 @@
 \\iut.bx1\Etudiants\Home\apascal002\Documents\basesim2021\BaseSim2021\obj\Debug\BaseSim2021.exe
 \\iut.bx1\Etudiants\Home\apascal002\Documents\basesim2021\BaseSim2021\obj\Debug\BaseSim2021.pdb
 \\iut.bx1\Etudiants\Home\apascal002\Documents\basesim2021\BaseSim2021\obj\Debug\BaseSim2021.Modif.resources
+C:\Users\arthu\Documents\iut\basesim2021\BaseSim2021\bin\Debug\BaseSim2021.exe.config
+C:\Users\arthu\Documents\iut\basesim2021\BaseSim2021\bin\Debug\BaseSim2021.exe
+C:\Users\arthu\Documents\iut\basesim2021\BaseSim2021\bin\Debug\BaseSim2021.pdb
+C:\Users\arthu\Documents\iut\basesim2021\BaseSim2021\obj\Debug\BaseSim2021.csprojAssemblyReference.cache
+C:\Users\arthu\Documents\iut\basesim2021\BaseSim2021\obj\Debug\BaseSim2021.DifficultyView.resources
+C:\Users\arthu\Documents\iut\basesim2021\BaseSim2021\obj\Debug\BaseSim2021.GameView.resources
+C:\Users\arthu\Documents\iut\basesim2021\BaseSim2021\obj\Debug\BaseSim2021.Modif.resources
+C:\Users\arthu\Documents\iut\basesim2021\BaseSim2021\obj\Debug\BaseSim2021.Properties.Resources.resources
+C:\Users\arthu\Documents\iut\basesim2021\BaseSim2021\obj\Debug\BaseSim2021.csproj.GenerateResource.cache
+C:\Users\arthu\Documents\iut\basesim2021\BaseSim2021\obj\Debug\BaseSim2021.csproj.CoreCompileInputs.cache
+C:\Users\arthu\Documents\iut\basesim2021\BaseSim2021\obj\Debug\BaseSim2021.exe
+C:\Users\arthu\Documents\iut\basesim2021\BaseSim2021\obj\Debug\BaseSim2021.pdb

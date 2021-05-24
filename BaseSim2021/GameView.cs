@@ -14,13 +14,15 @@ namespace BaseSim2021
         List<IndexedValueView> indViews;
         List<IndexedValueView> perksViews;
         List<IndexedValueView> crisesViews;
+
         /// <summary>
         /// The constructor for the main window
         /// </summary>
         public GameView(WorldState world)
         {
             InitializeComponent();
-
+            
+            
             theWorld = world;
         }
         /// <summary>
@@ -67,13 +69,13 @@ namespace BaseSim2021
                 Rectangle PerksRectangle = new Rectangle(0, 300, 2100, 300);
                 Rectangle CrisesRectangle = new Rectangle(0, 400, 2100, 300);
                 int margin = 5;
+                int w = 80;
+                int h = 80; ;
                 int xPol = PolRectangle.X + margin, yPol = PolRectangle.Y + margin;
                 int xGrp = GrpRectangle.X + margin, yGrp = GrpRectangle.Y + margin;
                 int xInd = IndRectangle.X + margin, yInd = IndRectangle.Y + margin;
                 int xPer = PerksRectangle.X + margin, yPer = PerksRectangle.Y + margin;
                 int xCri = CrisesRectangle.X + margin, yCri = CrisesRectangle.Y + margin;
-                int w = 80;
-                int h = 80;
                 polViews = new List<IndexedValueView>();
                 grpViews = new List<IndexedValueView>();
                 indViews = new List<IndexedValueView>();
@@ -81,8 +83,8 @@ namespace BaseSim2021
                 crisesViews = new List<IndexedValueView>();
                 foreach (IndexedValue p in theWorld.Policies)
                 {
-                    
-                    polViews.Add(new IndexedValueView(p, new Point(xPol, yPol), new Size(w, h)));
+
+                    polViews.Add(new IndexedValueView(p, new Point(xPol, yPol), new Size(w, h), Color.Aqua));
                     xPol += w + margin;
                     if (xPol > PolRectangle.Right)
                     {
@@ -90,11 +92,11 @@ namespace BaseSim2021
                         xPol = PolRectangle.X;
                         yPol += h + margin;
                     }
-                    
+
                 }
                 foreach (IndexedValue p in theWorld.Groups)
                 {
-                    grpViews.Add(new IndexedValueView(p, new Point(xGrp, yGrp), new Size(w, h)));
+                    grpViews.Add(new IndexedValueView(p, new Point(xGrp, yGrp), new Size(w, h), Color.BlueViolet));
                     xGrp += w + margin;
                     if (xGrp > GrpRectangle.Right)
                     {
@@ -102,11 +104,11 @@ namespace BaseSim2021
                         xGrp = GrpRectangle.X;
                         yGrp += h + margin;
                     }
-                    
+
                 }
                 foreach (IndexedValue p in theWorld.Indicators)
                 {
-                    indViews.Add(new IndexedValueView(p, new Point(xInd, yInd), new Size(w, h)));
+                    indViews.Add(new IndexedValueView(p, new Point(xInd, yInd), new Size(w, h), Color.OrangeRed));
                     xInd += w + margin;
                     if (xInd > IndRectangle.Right)
                     {
@@ -114,11 +116,11 @@ namespace BaseSim2021
                         xInd = IndRectangle.X;
                         yInd += h + margin;
                     }
-                    
+
                 }
                 foreach (IndexedValue p in theWorld.Perks)
                 {
-                    perksViews.Add(new IndexedValueView(p, new Point(xPer, yPer), new Size(w, h)));
+                    perksViews.Add(new IndexedValueView(p, new Point(xPer, yPer), new Size(w, h), Color.Red));
                     xPer += w + margin;
                     if (xPer > PerksRectangle.Right)
                     {
@@ -126,11 +128,11 @@ namespace BaseSim2021
                         xPer = PerksRectangle.X;
                         yPer += h + margin;
                     }
-                    
+
                 }
                 foreach (IndexedValue p in theWorld.Crises)
                 {
-                    crisesViews.Add(new IndexedValueView(p, new Point(xCri, yCri), new Size(w, h)));
+                    crisesViews.Add(new IndexedValueView(p, new Point(xCri, yCri), new Size(w, h), Color.Brown));
                     xCri += w + margin;
                     if (xCri > CrisesRectangle.Right)
                     {
@@ -138,7 +140,7 @@ namespace BaseSim2021
                         xCri = CrisesRectangle.X;
                         yCri += h + margin;
                     }
-                    
+
                 }
                 foreach (IndexedValueView indexed in polViews)
                 {
@@ -221,9 +223,71 @@ namespace BaseSim2021
 
         private void GameView_MouseDown(object sender, MouseEventArgs e)
         {
+            string name;
+            int value, maxValue, minValue;
+            foreach(IndexedValueView politics in polViews)
+            {
+                if (politics.Contains(e.Location))
+                {
+                    name = politics.IndexedValue.Name;
+                    value = politics.IndexedValue.Value;
+                    minValue = politics.IndexedValue.MinValue;
+                    maxValue = politics.IndexedValue.MaxValue;
+                    Modif modif = new Modif(name, value, maxValue, minValue);
+                    modif.Show();
+                }
+            }
+            foreach (IndexedValueView perks in perksViews)
+            {
+                if (perks.Contains(e.Location))
+                {
+                    name = perks.IndexedValue.Name;
+                    value = perks.IndexedValue.Value;
+                    minValue = perks.IndexedValue.MinValue;
+                    maxValue = perks.IndexedValue.MaxValue;
+                    Modif modif = new Modif(name, value, maxValue, minValue);
+                    modif.Show();
+                }
+            }
+            foreach (IndexedValueView grp in grpViews)
+            {
+                if (grp.Contains(e.Location))
+                {
+                    name = grp.IndexedValue.Name;
+                    value = grp.IndexedValue.Value;
+                    minValue = grp.IndexedValue.MinValue;
+                    maxValue = grp.IndexedValue.MaxValue;
+                    Modif modif = new Modif(name, value, maxValue, minValue);
+                    modif.Show();
+                }
+            }
+            foreach (IndexedValueView indicators in indViews)
+            {
+                if (indicators.Contains(e.Location))
+                {
+                    name = indicators.IndexedValue.Name;
+                    value = indicators.IndexedValue.Value;
+                    minValue = indicators.IndexedValue.MinValue;
+                    maxValue = indicators.IndexedValue.MaxValue;
+                    Modif modif = new Modif(name, value, maxValue, minValue);
+                    modif.Show();
+                }
+            }
+            foreach (IndexedValueView crises in crisesViews)
+            {
+                if (crises.Contains(e.Location))
+                {
+                    name = crises.IndexedValue.Name;
+                    value = crises.IndexedValue.Value;
+                    minValue = crises.IndexedValue.MinValue;
+                    maxValue = crises.IndexedValue.MaxValue;
+                    Modif modif = new Modif(name, value, maxValue, minValue);
+                    modif.Show();
+                }
+            }
 
-            Modif modif = new Modif();
-            modif.Show();
+
+
         }
 
     }
