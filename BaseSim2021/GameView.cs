@@ -21,8 +21,8 @@ namespace BaseSim2021
         public GameView(WorldState world)
         {
             InitializeComponent();
-            
-            
+
+
             theWorld = world;
         }
         /// <summary>
@@ -70,7 +70,7 @@ namespace BaseSim2021
                 Rectangle CrisesRectangle = new Rectangle(0, 400, 2100, 300);
                 int margin = 5;
                 int w = 80;
-                int h = 80; ;
+                int h = 80;
                 int xPol = PolRectangle.X + margin, yPol = PolRectangle.Y + margin;
                 int xGrp = GrpRectangle.X + margin, yGrp = GrpRectangle.Y + margin;
                 int xInd = IndRectangle.X + margin, yInd = IndRectangle.Y + margin;
@@ -223,9 +223,9 @@ namespace BaseSim2021
 
         private void GameView_MouseDown(object sender, MouseEventArgs e)
         {
-            string name;
+            string name, desc;
             int value, maxValue, minValue;
-            foreach(IndexedValueView politics in polViews)
+            foreach (IndexedValueView politics in polViews)
             {
                 if (politics.Contains(e.Location))
                 {
@@ -233,8 +233,10 @@ namespace BaseSim2021
                     value = politics.IndexedValue.Value;
                     minValue = politics.IndexedValue.MinValue;
                     maxValue = politics.IndexedValue.MaxValue;
-                    Modif modif = new Modif(name, value, maxValue, minValue);
+                    desc = politics.IndexedValue.Description;
+                    Modif modif = new Modif(name, value, maxValue, minValue, desc);
                     modif.Show();
+
                 }
             }
             foreach (IndexedValueView perks in perksViews)
@@ -245,7 +247,8 @@ namespace BaseSim2021
                     value = perks.IndexedValue.Value;
                     minValue = perks.IndexedValue.MinValue;
                     maxValue = perks.IndexedValue.MaxValue;
-                    Modif modif = new Modif(name, value, maxValue, minValue);
+                    desc = perks.IndexedValue.Description;
+                    Modif modif = new Modif(name, value, maxValue, minValue, desc);
                     modif.Show();
                 }
             }
@@ -257,7 +260,8 @@ namespace BaseSim2021
                     value = grp.IndexedValue.Value;
                     minValue = grp.IndexedValue.MinValue;
                     maxValue = grp.IndexedValue.MaxValue;
-                    Modif modif = new Modif(name, value, maxValue, minValue);
+                    desc = grp.IndexedValue.Description;
+                    Modif modif = new Modif(name, value, maxValue, minValue, desc);
                     modif.Show();
                 }
             }
@@ -269,8 +273,10 @@ namespace BaseSim2021
                     value = indicators.IndexedValue.Value;
                     minValue = indicators.IndexedValue.MinValue;
                     maxValue = indicators.IndexedValue.MaxValue;
-                    Modif modif = new Modif(name, value, maxValue, minValue);
+                    desc = indicators.IndexedValue.Description;
+                    Modif modif = new Modif(name, value, maxValue, minValue, desc);
                     modif.Show();
+
                 }
             }
             foreach (IndexedValueView crises in crisesViews)
@@ -281,13 +287,11 @@ namespace BaseSim2021
                     value = crises.IndexedValue.Value;
                     minValue = crises.IndexedValue.MinValue;
                     maxValue = crises.IndexedValue.MaxValue;
-                    Modif modif = new Modif(name, value, maxValue, minValue);
+                    desc = crises.IndexedValue.Description;
+                    Modif modif = new Modif(name, value, maxValue, minValue, desc);
                     modif.Show();
                 }
             }
-
-
-
         }
 
     }
